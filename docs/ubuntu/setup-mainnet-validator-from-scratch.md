@@ -357,3 +357,10 @@ casper-client get-auction-info --node-address http://127.0.0.1:7777
 ```
 
 The bid should appear among the returned ```bids```. If the public key associated with a bid appears in the ```validator_weights``` structure for an era, then the account is bonded in that era.
+
+
+### Trouble shooting commands
+```
+watch -n 5 'echo -n "Peer Count: "; curl -s localhost:8888/status | jq ".peers | length"; echo; echo "last_added_block_info:"; curl -s localhost:8888/status | jq .last_added_block_info; echo; echo "casper-node-launcher status:"; systemctl status casper-node-launcher; curl -s localhost:8888/status | jq .next_upgrade'
+
+```
